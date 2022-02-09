@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Function</h1>
+    <h2>Basic</h2>
+    <ul>
+      <script>
+        function two(){
+          document.write("<li>2-1</li>");
+          document.write('<li>2-2</li>');
+        }
+        document.write('<li>1</li>');
+        two();
+        two();
+        document.write('<li>2-2</li>');
+        document.write('<li>3</li>');
+      </script>
+    </ul>
+
+    <h2>Parameter & Argument</h2>
+    <script>
+      function onePlusone(){
+        document.write(1+1 + '<br>');
+      }
+      onePlusone();
+      function aPlusB(a, b){
+        document.write(a+b + '<br>');
+      }
+      onePlusone();
+      aPlusB(2, 3);
+    </script>
+  </body>
+</html>

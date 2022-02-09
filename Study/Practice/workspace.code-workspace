@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "Crawler",
+			"path": "..\\Crawler"
+		},
+		{
+			"name": "chrome",
+			"path": "..\\..\\..\\..\\Downloads\\chrome"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}

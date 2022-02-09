@@ -1,0 +1,3 @@
+D:/Selfstudy/Permutation/cmake-build-debug/CMakeFiles/Permutation.dir
+D:/Selfstudy/Permutation/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Selfstudy/Permutation/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+          /*.은 class의 style을 표현할 때 쓴다. #은 id의 style을 표현할 때 쓴다.
+              id는 학번으로 더 깊은 타겟팅으로 국소적 효과를 주고, class는 포괄적인 '반'과 같은 개념으로 효과를 준다. class는 grouping 같은 개념이고, id는 식별이다.
+              바로 밑 style에 span에 대한 스타일 정의도 있다고 가정해보자. 이때, span이 제일 큰 범주, 그다음 js 그리고 first가 제일 좁고 국소적인 적용이어서 국소적인 적용이 제일 우선순위가 높다.*/
+    .js{
+      font-weight: bold;
+    }
+    #first{
+      font-style: oblique;
+    }
+  </style>
+</head>
+<body>
+  <h1><a href = "index.html"> WEB</a></h1>
+  <!--
+  <input type="button" value="night" onclick="document.querySelector('body').style.backgroundColor = 'black';
+                document.querySelector('body').style.color = 'white';">
+  <input type="button" value="Day" onclick="document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black';" >
+              -->
+  <input id="night_day" type="button" value="day" onclick="
+    if(document.querySelector('#night_day').value === 'night'){
+      document.querySelector('body').style.backgroundColor = 'white';
+      document.querySelector('body').style.color = 'black';
+      document.querySelector('#night_day').value = 'day';
+
+    }
+    else{
+      document.querySelector('body').style.backgroundColor = 'black';
+      document.querySelector('body').style.color = 'white';
+      document.querySelector('#night_day').value = 'night';
+    }
+  ">
+  <h1 style="background-color: coral;color:powderblue">Javascript</h1>
+  <a href= "http://www.tcpschool.com/javascript/js_intro_basic" target = "_blank" title = "AI description">Artificial Intelligence</a> is an tech that <strong> makes computer to behave alike <u>humans</u>.</strong>
+  <h1>JavaScript 이란 무엇인가?</h1>
+  <br><br>
+  <p> <span id= "first" class= "js">JavaScript</span>는 객체(object) 기반의 스크립트 언어입니다.
+HTML로는 웹의 내용을 작성하고, CSS로는 웹을 디자인하며, <span class= "js">JavaScript</span>로는 웹의 동작을 구현할 수 있습니다.
+자바스크립트는 주로 웹 브라우저에서 사용되나, Node.js와 같은 프레임워크를 사용하면 서버 측 프로그래밍에서도 사용할 수 있습니다.
+현재 컴퓨터나 스마트폰 등에 포함된 대부분의 웹 브라우저에는 자바스크립트 인터프리터가 내장되어 있습니다.
+
+</p>
+<input id="night_day2" type="button" value="day" onclick="
+  if(document.querySelector('#night_day2').value === 'night'){
+    document.querySelector('body').style.backgroundColor = 'white';
+    document.querySelector('body').style.color = 'black';
+    document.querySelector('#night_day2').value = 'day';
+
+  }
+  else{
+    document.querySelector('body').style.backgroundColor = 'black';
+    document.querySelector('body').style.color = 'white';
+    document.querySelector('#night_day2').value = 'night';
+  }
+  ">
+  <!-- 리팩토링 할시  위 2개의 버튼처럼 id를 계속 다르게 주지 말고, this를 활용. 그리고 var 변수로 축약-->
+  <input  type="button" value="day" onclick="
+    var target = document.querySelector('body')
+    if(this.value === 'night'){
+      target.style.backgroundColor = 'white';
+      target.style.color = 'black';
+      this.value = 'day';
+
+    }
+    else{
+      target.style.backgroundColor = 'black';
+      target.style.color = 'white';
+      this.value = 'night';
+    }
+    ">
+  <img src="coding_unsplash.jpg" width="100%">
+</body>
+</html>
