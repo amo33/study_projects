@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Hello <!-- use the server engine -->
+    <%= 2 + 2 %> <!-- = means to show the result on the page-->
+    <%= locals.text || 'Default' %> <!-- show the text. sometimes locals might be defined or sometimes might not. 
+        So, We need to determine the default one. -->
+</body>
+</html>
