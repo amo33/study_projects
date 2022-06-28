@@ -1,0 +1,10 @@
+#### express 공부 중 정리 
+
++Use npx express-generator nameofyourproject 
+if you are using window and having a problem with using express when you are trying to make basic application form. 
+
+# view is used to show to clients
+# Route is a section of express code that associates an http verb(= GET, POST, PUT, DELETE etc), a URL path pattern and routes handler
+# Routes & controllers 
+
+we use express.Router  to create routes 

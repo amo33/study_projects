@@ -1,9 +1,7 @@
-Testlist = [
-               ["Romeo and Juliet","Shakespeare"],
-               ["Othello","Play"],
-               ["Macbeth","Tragedy"]
-               ]
-Value = "Tragedy"
-for index, lst in enumerate(Testlist):
-  if Value in lst:
-    print( index, lst.index(Value) )
+import numpy as np
+
+x = np.random.randn(100)
+y = np.random.randn(100)
+
+x = np.dot(x.T, x)
+print(x[0,0])
