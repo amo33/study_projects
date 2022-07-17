@@ -1,45 +1,35 @@
 import sys
-
-def find_alternative(pre, total):
-    for n in matrix[total]:
-        if n == 1:
-            return 1
-
-    for n in matrix[total]:
-        
-        if n == pre:
-            continue
-        else:         
-            if find_alternative(total,n) == 1:
-                return 1
-
-    return -1
-
-def find_parent(total):
-    for i in range(2,total+1):
-        for n in matrix[i]:
-            if n == 1:
-                check[i] = 1
-                break
-        if check[i] == 0:
-            for n in matrix[i]:    
-                if(find_alternative(i,n) == 1):
-                    check[i] = n
-
-
-input = sys.stdin.readline
-
+from collections import deque 
 
 A = int(sys.stdin.readline())
 check = [0] * (A+1)
-matrix = [[] for j in range(A+1)]
+matrix = {}
+for i in range(1,A+1):
+    matrix[i] = []
 for i in range(A-1):
     lnode, rnode = map(int, input().split())
+    
     matrix[lnode].append(rnode)
     matrix[rnode].append(lnode)
-check[1] = 1
+visited = [False for _ in range(A+1)] 
+parent_lst = [A+2] * (A+1)
+parent_lst[1] = 0
+def grade_level():
+    que = deque()
+    que.append(1)
+    while que:
+        val = que.pop()
+        if visited[val] == False:
+            for j in range(len(matrix[val])):
 
-find_parent(A)
+                if matrix[val][j] == 1:
+                    parent_lst[val] = 1
+                elif parent_lst[matrix[val][j]] != A+2:
+                    parent_lst[val] = min(parent_lst[val],matrix[val][j])
+                que.append(matrix[val][j])
+        visited[val] = True 
+            
+grade_level()
 
-for i in range(2, A+1):
-    print(check[i])
+for i in range(2,A+1):
+    print(parent_lst[i])

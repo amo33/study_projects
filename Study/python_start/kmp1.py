@@ -5,8 +5,7 @@ import sys
 # str_example = 'abacaaba'
 text = sys.stdin.readline()[:-1]
 str_example = sys.stdin.readline()[:-1]
-# print(text)
-# print(str_example)
+
 lst = [0 for _ in range(len(str_example))]
 def find_pre_sub(val_string):
     i = 1

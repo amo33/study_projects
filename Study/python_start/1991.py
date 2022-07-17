@@ -1,41 +1,37 @@
 import sys
 
-input = sys.stdin.readline
+def preorder(tree,index):
+    print(tree[index][0],end="")
+    if tree[index][1] != '.':
+        preorder(tree,tree[index][1])
+    if tree[index][2] != '.':
+        preorder(tree, tree[index][2])
 
-def preorder(node, matrix):
-    print(1)
-    if check[node] != 1:
-        print(matrix[node][0])
-        check[node] = 1
-        left_token = matrix[node][1]
-        if left_token != '.':
-            matrix[node][1] = '0'
-            lflag = 1
-        else:
-            lflag = 0
-        
-        right_token = matrix[node][2]
-        if right_token != '.':
-            rflag = 1
-            matrix[node][2] = '0'
-        else:
-            rflag = 0
-        for index, lst in enumerate(matrix):
-            if left_token in lst & lflag == 1:
-                left_key = index #+ lst.index(left_token)
-            elif right_token in lst & rflag == 1:
-                right_key = index #+ lst.index(right_token)
-        preorder(left_key, matrix)
-        preorder(right_key, matrix)
-
-
-
-
+def postorder(tree, index):
+    if tree[index][1] != '.':
+        postorder(tree, tree[index][1])
+    if tree[index][2] != '.':
+        postorder(tree, tree[index][2])
+    print(tree[index][0],end="")
+    
+def inorder(tree, index):
+    
+    if tree[index][1] != '.':
+        inorder(tree, tree[index][1])
+    print(tree[index][0],end="")
+    if tree[index][2] != '.':
+        inorder(tree, tree[index][2])
 n = int(sys.stdin.readline())
-
-matrix =[[] for _ in range(n)]
-check = [0] * n
+    
+matrix ={}
+# matrix.append([0])
 for i in range(n):
-    matrix[i].append((map(str, input().split())))
-print(matrix)
-preorder(0, matrix)
+    temp_lst=list(map(str, input().split()))
+    matrix[temp_lst[0]] = temp_lst
+# print(matrix)
+preorder(matrix, "A")
+print()
+inorder(matrix,"A")
+print()
+postorder(matrix,"A")
+
