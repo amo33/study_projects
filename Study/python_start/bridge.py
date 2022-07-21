@@ -90,17 +90,17 @@ def solution(distance, rocks, n):
         eliminate = 0 
         start_stone = 0
         for rock in rocks:
-            if rock - start_stone < mid:
+            if rock - start_stone < mid: # 제거해야할 값이 더 크다면 돌 제거 +1 
                 eliminate +=1 
             else:
-                start_stone = rock 
-            if eliminate > n:
+                start_stone = rock # 그게 아니라면 현재 시작 돌을 새로 업데이트한다.
+            if eliminate > n: # 만약 돌 개수가 적정을 넘기면, distance를 너무 크게 잡고 있는거다.
                 break 
         if eliminate > n:
-            end = mid -1 
-        else:
-            answer = mid 
-            pre = mid+1 
+            end = mid -1 # distance인 mid를 더 작게 구한다. 
+        else: # 그게 아니라면 적정 개수에 맞게 구했으니
+            answer = mid # 정답 후보로 넘겨주고, 
+            pre = mid+1 #mid+1로 길이를 구해보자. 
         print(answer, pre, end, start_stone)
     return answer
 
