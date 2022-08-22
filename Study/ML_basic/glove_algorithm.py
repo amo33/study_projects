@@ -5,7 +5,9 @@ import torch.nn.init as init
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
 
-
+"""
+본 코드 구현은 https://github.com/noaRricky/pytorch-glove/blob/master/glove.py 를 기반으로 복습차원에서 구현하였으며, 단순 공부를 위해서 코드를 구현만 해본 것임을 알립니다.
+"""
 class GloVeModel(nn.Module):
 
     def __init__(self, embedding_size, context_size, vocab_size, min_occurrence=1, x_max=100, alpha=3 / 4): 
