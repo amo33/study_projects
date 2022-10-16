@@ -39,56 +39,84 @@ for i in range(len(arr)):
     print(arr[i])
 '''
 
-cnt =int(input())
-arr = []
-new_arr = [0 for _ in range(cnt)]
-while cnt >0:
-    arr.append(int(input()))
-    cnt -=1
+# cnt =int(input())
+# arr = []
+# new_arr = [0 for _ in range(cnt)]
+# while cnt >0:
+#     arr.append(int(input()))
+#     cnt -=1
 
-def mergesort(start, middle, end):
-    i = start 
-    j = middle + 1
+# def mergesort(start, middle, end):
+#     i = start 
+#     j = middle + 1
 
-    k = start
-    while(i <= middle and j <= end):
+#     k = start
+#     while(i <= middle and j <= end):
 
-        if arr[i] < arr[j]:
-            new_arr[k]= arr[i]
-            i+=1         
-            k+=1
-        else:
-            new_arr[k] = arr[j]
-            j+=1 
-            k+=1
-    if i>middle and j <=end:
-        while j<=end:
-            new_arr[k] = arr[j]
-            j+=1 
-            k+=1
-    elif i<=middle and j> end:
-        while i<=middle:
-            new_arr[k] = arr[i]
-            i+=1
-            k+=1
-    for k in range(start,end+1): # 기존 배열에 업데이트 해줘야하며 -> 왜냐하면 이전 정렬 업데이트를 반영한 다음 정렬을 진행해야하므로!
-        arr[k] = new_arr[k] 
-    #print(new_arr)
+#         if arr[i] < arr[j]:
+#             new_arr[k]= arr[i]
+#             i+=1         
+#             k+=1
+#         else:
+#             new_arr[k] = arr[j]
+#             j+=1 
+#             k+=1
+#     if i>middle and j <=end:
+#         while j<=end:
+#             new_arr[k] = arr[j]
+#             j+=1 
+#             k+=1
+#     elif i<=middle and j> end:
+#         while i<=middle:
+#             new_arr[k] = arr[i]
+#             i+=1
+#             k+=1
+#     for k in range(start,end+1): # 기존 배열에 업데이트 해줘야하며 -> 왜냐하면 이전 정렬 업데이트를 반영한 다음 정렬을 진행해야하므로!
+#         arr[k] = new_arr[k] 
+#     #print(new_arr)
 
-#val = int(math.log2(cnt) )
-def divide(left, right):
-    if left >= right:
-        return
-    start = left 
-    middle = int((left+right)/2)
-    end = right  
-    divide(start, middle)
-    divide(middle+1, end)
-    mergesort(start, middle, end)
-divide(0, len(arr)-1)
-#mergesort(0, 2, 4)
-for i in range(len(arr)):
-    print(arr[i]) #  arr 를 출력해줘야한다. 그 이유는 내가 left >=right 일때(원소 1개만 들어오는 상황은)는 아무 동작 안하게 해놓았다. (divide 함수 참고)
-print("============")
-for i in range(len(new_arr)):
-    print(new_arr[i]) # 이처럼 new_Arr를 출력하면 원하는 결과가 나오지 않는 경우도 존재한다.
+# #val = int(math.log2(cnt) )
+# def divide(left, right):
+#     if left >= right:
+#         return
+#     start = left 
+#     middle = int((left+right)/2)
+#     end = right  
+#     divide(start, middle)
+#     divide(middle+1, end)
+#     mergesort(start, middle, end)
+# divide(0, len(arr)-1)
+# #mergesort(0, 2, 4)
+# for i in range(len(arr)):
+#     print(arr[i]) #  arr 를 출력해줘야한다. 그 이유는 내가 left >=right 일때(원소 1개만 들어오는 상황은)는 아무 동작 안하게 해놓았다. (divide 함수 참고)
+# print("============")
+# for i in range(len(new_arr)):
+#     print(new_arr[i]) # 이처럼 new_Arr를 출력하면 원하는 결과가 나오지 않는 경우도 존재한다.
+
+
+example = [2,3,5,4]
+def partition(start, end, lst):
+    j = start
+    pivot = lst[end] # 4
+    for i in range(start,end):
+
+        if lst[i] < pivot:
+            lst[i] , lst[j] = lst[j], lst[i]
+            j+=1
+            continue
+        # print(lst[i], pivot,i)
+        
+        print(lst)
+    k=j
+    print(k, end)
+    lst[k] , lst[end] = lst[end] , lst[k]
+    
+    return k
+def quicksort(lst,start,end):
+    if start<end:
+        
+        idx = partition(start,end,lst)
+        quicksort(lst,start, idx-1)
+        quicksort(lst,idx+1, end)
+quicksort(example, 0, len(example)-1)
+print(example)

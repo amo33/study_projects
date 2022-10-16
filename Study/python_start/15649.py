@@ -1,33 +1,35 @@
-import sys 
-N, M = map(int, sys.stdin.readline().strip().split())
-# num_dict = {}
-result_lst = []
-# for i in range(1,N+1):
-#     num_dict[i] = 0
+import sys
+sys.setrecursionlimit(10**6)
+N, M = map(int, sys.stdin.readline().split()) 
 
-def check(val,candidate):
-    for cand in candidate:
-        # if cand == str(val) or num_dict[int(cand)] == num_dict[val]
-        if cand == str(val):
-            # print(cand, val, num_dict)
-            return False 
+def check(val, lst):
+    
+    for value in lst:
+        if value == str(val):
+            return False  
     return True 
-
-def extract_candidate(idx, result_candidate):
-    # print(num_dict)
-    if idx == M:
-        result_lst.append(list(result_candidate))
+def backtrack(idx,cnt,status,result_lst = ''):
+    # print(idx,result_lst)
+    if status == 0:
+        result_lst = str(idx)
+        status+=1
+    if cnt == status:
+        # print(result_lst)
+        for val in result_lst:
+            print(val, end=" ")
+        print()
         return 
+    
     for i in range(1,N+1):
+        # print(result_lst)
+        if check(i,result_lst):
+            # print(result_lst)
+            # visited[i] = True 
+            backtrack(i+1, cnt, status+1, result_lst+str(i))
         
-        # print("c",candidate_add)
-        if check(i, result_candidate):
-            candidate_add = result_candidate + str(i)
-            # print("c2",candidate_add)
-            extract_candidate(idx+1, candidate_add)
 
-extract_candidate(0, '')
-for lst in result_lst:
-    for j in range(M):
-        print(int(lst[j]), end=" ")
-    print()
+for i in range(1,N+1):
+    # print(i,N,M)
+    # visited = [False for i in range(N+1)]
+    # visited[i] = True
+    backtrack(i,M, 0) 
